@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+* {
+  outline:none !important;
+  transition: all 0.3s;
+}
+
+body{
+  margin: 0;
+  background-color: #eeeeee;
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover{
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.page-header{
+  position: relative;
+  height: 150px;
+  background-color: mat-color($mat-indigo, 400);
+  color: white;
+  padding: 10px 10px 10px 1rem;
+  &-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    right: 15px;
+    left: 15px;
+    bottom: 25px;
+  }
+  &-title{
+    font-size: 36pt;
+  }
+}
+
+.container {
+  margin: 25px 45px;
+}

@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Search Movie</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput
+           cdkFocusInitial
+           placeholder="Movie title"
+           [formControl]="searchCtrl"
+           [matAutocomplete]="autocomplete" />
+    <mat-autocomplete #autocomplete="matAutocomplete">
+      <mat-option *ngFor="let movie of movies | async"
+                  [value]="movie.Title"
+                  (onSelectionChange)="movieSelected(movie)">
+        <p>{{ movie.Title }}</p>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <app-movie-card *ngIf="selectedMovie" [movie]="selectedMovie"></app-movie-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <span *ngIf="selectedMovie">
+    <button mat-button
+            *ngIf="!checkMovieAlreadyInList()"
+            (click)="addMovieToList()">
+      Add to List
+    </button>
+    <button mat-button
+            *ngIf="checkMovieAlreadyInList()"
+            [disabled]="true">
+      Already in List
+    </button>
+  </span>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

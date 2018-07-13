@@ -1,0 +1,11 @@
+<div class="info-text" *ngIf="listIsEmpty">
+  List is Empty
+</div>
+<div class="card-container" *ngFor="let movie of movies | async">
+  <button mat-icon-button
+          matTooltip="Delete movie from list"
+          (click)="deleteMovie(movie)">
+    <mat-icon color="warn">delete</mat-icon>
+  </button>
+  <app-movie-card [movie]="movie"></app-movie-card>
+</div>

@@ -1,0 +1,33 @@
+:host {
+  max-width: 750px;
+  display: block;
+}
+
+.mat-card-content {
+  display: flex;
+}
+
+.movie-info {
+  flex: 1 1 auto;
+  margin-left: 15px;
+  a {
+    color: #2a5885;
+    display: inline-block;
+    h2 {
+      margin: 0;
+    }
+  }
+
+  p {
+    font-size: 10pt;
+  }
+}
+
+table{
+  font-size: 10pt;
+  margin-top: 15px;
+}
+
+.movie-attr-name{
+  font-weight: bold;
+}
