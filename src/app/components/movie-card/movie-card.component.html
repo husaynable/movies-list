@@ -6,28 +6,18 @@
         <h2>{{ movie.Title }}</h2>
       </a>
 
-      <table cellspacing="5">
-        <tr>
-          <td class="movie-attr-name">Director:</td>
-          <td class="movie-attr-val">{{ movie.Director }}</td>
-        </tr>
-        <tr>
-          <td class="movie-attr-name">Writer:</td>
-          <td class="movie-attr-val">{{ movie.Writer }}</td>
-        </tr>
-        <tr>
-          <td class="movie-attr-name">Actors:</td>
-          <td class="movie-attr-val">{{ movie.Actors }}</td>
-        </tr>
-        <tr>
-          <td class="movie-attr-name">Genre:</td>
-          <td class="movie-attr-val">{{ movie.Genre }}</td>
-        </tr>
-        <tr>
-            <td class="movie-attr-name">Year:</td>
-            <td class="movie-attr-val">{{ movie.Year }}</td>
-          </tr>
-      </table>
+      <div class="movie-attrs">
+        <div class="movie-attr-name">Director:</div>
+        <div>{{ movie.Director }}</div>
+        <div class="movie-attr-name">Writer:</div>
+        <div>{{ movie.Writer }}</div>
+        <div class="movie-attr-name">Actors:</div>
+        <div>{{ movie.Actors }}</div>
+        <div class="movie-attr-name">Genre:</div>
+        <div>{{ movie.Genre }}</div>
+        <div class="movie-attr-name">Year:</div>
+        <div>{{ movie.Year }}</div>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

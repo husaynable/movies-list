@@ -23,9 +23,13 @@
   }
 }
 
-table{
-  font-size: 10pt;
-  margin-top: 15px;
+.movie-attrs {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 10% 1fr;
+  gap: 1vw;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .movie-attr-name{
