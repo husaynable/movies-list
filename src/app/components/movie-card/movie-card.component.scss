@@ -28,9 +28,10 @@
   grid-template-columns: 55px 1fr;
   gap: 1vw;
   align-items: center;
-  &::nth-child(odd) {
-    font-weight: bold;
-  }
+}
+
+.movie-attr-name {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 850px) {

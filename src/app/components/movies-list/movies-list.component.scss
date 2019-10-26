@@ -1,13 +1,10 @@
 .card-container {
   display: flex;
   align-items: center;
-  app-movie-card {
-    flex: 1 1 auto;
-  }
-}
 
-.card-container + .card-container {
-  margin-top: 35px;
+  &+ .card-container {
+    margin-top: 35px;
+  }
 }
 
 .mat-icon-button {
