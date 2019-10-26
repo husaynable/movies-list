@@ -4,34 +4,48 @@
 }
 
 .mat-card-content {
-  display: flex;
+  display: grid;
+  grid-template:
+            "b a a" auto
+            "b c c" auto
+            "b c c" auto / auto auto auto;
+  gap: 2vw;
 }
 
-.movie-info {
-  flex: 1 1 auto;
-  margin-left: 15px;
-  a {
-    color: #2a5885;
-    display: inline-block;
-    h2 {
-      margin: 0;
-    }
-  }
+.caption {
+  grid-area: a;
+  color: #2a5885;
+}
 
-  p {
-    font-size: 10pt;
-  }
+.poster {
+  grid-area: b;
 }
 
 .movie-attrs {
   display: grid;
+  grid-area: c;
   grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: 10% 1fr;
+  grid-template-columns: 55px 1fr;
   gap: 1vw;
   align-items: center;
-  margin-top: 20px;
+  &::nth-child(odd) {
+    font-weight: bold;
+  }
 }
 
-.movie-attr-name{
-  font-weight: bold;
+@media screen and (max-width: 850px) {
+  .mat-card-content {
+    grid-template:
+      "a a a" auto
+      "b b b" auto
+      "c c c" auto / auto auto auto;
+  }
+
+  .caption {
+    text-align: center;
+  }
+
+  .poster {
+    margin: 0 auto;
+  }
 }

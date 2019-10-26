@@ -1,23 +1,20 @@
 <mat-card>
   <mat-card-content>
-    <img [src]="movie.Poster" height="200" />
-    <div class="movie-info">
-      <a href="{{ imdbEndpoint }}{{ movie.imdbID }}" target="_blank">
-        <h2>{{ movie.Title }}</h2>
-      </a>
-
-      <div class="movie-attrs">
-        <div class="movie-attr-name">Director:</div>
-        <div>{{ movie.Director }}</div>
-        <div class="movie-attr-name">Writer:</div>
-        <div>{{ movie.Writer }}</div>
-        <div class="movie-attr-name">Actors:</div>
-        <div>{{ movie.Actors }}</div>
-        <div class="movie-attr-name">Genre:</div>
-        <div>{{ movie.Genre }}</div>
-        <div class="movie-attr-name">Year:</div>
-        <div>{{ movie.Year }}</div>
-      </div>
+    <a href="{{ imdbEndpoint }}{{ movie.imdbID }}" target="_blank" class="caption">
+      <h2>{{ movie.Title }}</h2>
+    </a>
+    <img [src]="movie.Poster" height="300" class="poster" />
+    <div class="movie-attrs">
+      <div class="movie-attr-name">Director:</div>
+      <div>{{ movie.Director }}</div>
+      <div class="movie-attr-name">Writer:</div>
+      <div>{{ movie.Writer }}</div>
+      <div class="movie-attr-name">Actors:</div>
+      <div>{{ movie.Actors }}</div>
+      <div class="movie-attr-name">Genre:</div>
+      <div>{{ movie.Genre }}</div>
+      <div class="movie-attr-name">Year:</div>
+      <div>{{ movie.Year }}</div>
     </div>
   </mat-card-content>
 </mat-card>
