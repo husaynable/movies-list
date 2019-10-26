@@ -10,24 +10,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  movies: Observable<MovieDetails[]>;
+  movies$: Observable<MovieDetails[]>;
   listIsEmpty = false;
 
-  constructor(private storeService: MoviesStoreService,
-              private snackBar: SnackBarService) { }
+  constructor(
+    private storeService: MoviesStoreService,
+    private snackBar: SnackBarService
+  ) {}
 
   ngOnInit() {
-    this.movies = this.storeService.getMovies();
-    this.movies.subscribe(m => {
-      if (!m || m.length === 0) {
-        this.listIsEmpty = true;
-      }
-    });
+    this.movies$ = this.storeService.getMovies();
   }
 
   deleteMovie(movie: MovieDetails) {
     this.storeService.deleteMovie(movie);
     this.snackBar.show('Movie is deleted from list');
   }
-
 }

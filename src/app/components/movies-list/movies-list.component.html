@@ -1,7 +1,7 @@
-<div class="info-text" *ngIf="listIsEmpty">
+<div class="info-text" *ngIf="(movies$ | async)?.length === 0">
   List is Empty
 </div>
-<div class="card-container" *ngFor="let movie of movies | async">
+<div class="card-container" *ngFor="let movie of movies$ | async">
   <button mat-icon-button
           matTooltip="Delete movie from list"
           (click)="deleteMovie(movie)">
