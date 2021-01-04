@@ -3,7 +3,7 @@
 
 * {
   outline:none !important;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 body{
@@ -34,10 +34,10 @@ a {
     position: absolute;
     right: 15px;
     left: 15px;
-    bottom: 25px;
+    bottom: 15px;
   }
   &-title{
-    font-size: 36pt;
+    font-size: 86px;
   }
 }
 
