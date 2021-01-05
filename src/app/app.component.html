@@ -4,18 +4,20 @@
       <div class="page-header-title">
         Movies List
       </div>
-      <button mat-raised-button
-              color="primary"
-              id="defaultSearchBtn"
-              (click)="openSearchDialog()">
-        Search Movie...
+      <button 
+        mat-raised-button
+        style="transition: transform 0.5s"
+        [ngStyle]="{'display': modalOpened ? 'none' : 'block' }"
+        color="primary"
+        id="defaultSearchBtn"
+        (click)="openSearchDialog()"
+      >
+        <mat-icon>search</mat-icon>
+        <span *ngIf="!showCircleBtn">Search Movie...</span>
       </button>
     </div>
   </div>
   <div class="container">
     <app-movies-list></app-movies-list>
   </div>
-  <button mat-fab color="primary" *ngIf="showCircleBtn" (click)="openSearchDialog()">
-    <mat-icon>search</mat-icon>
-  </button>
 </main>

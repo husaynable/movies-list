@@ -13,6 +13,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   showFab = false;
   headerFontSub: Subscription;
   showCircleBtn = false;
+  modalOpened = false;
 
   constructor(private matDialog: MatDialog, private ngZone: NgZone) { }
 
@@ -39,24 +40,33 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   registerSearchBtnIntersectionObserver() {
+    const el = document.querySelector('.page-header-content');
+    const btn = document.getElementById('defaultSearchBtn');
     const callback: IntersectionObserverCallback = (entries) => {
       const entry = entries[0];
       if (entry) {
         if (entry.isIntersecting) {
+          btn.classList.add('mat-raised-button');
+          btn.classList.remove('mat-fab');
           this.showCircleBtn = false;
         } else {
+          btn.classList.add('mat-fab');
+          btn.classList.remove('mat-raised-button');
           this.showCircleBtn = true;
         }
       }
     };
-    const observer = new IntersectionObserver(callback, {threshold: 0.5});
-    observer.observe(document.getElementById('defaultSearchBtn'));
+    const observer = new IntersectionObserver(callback, {threshold: 1.0});
+    observer.observe(el);
   }
 
   openSearchDialog() {
-    this.matDialog.open(MoviesSearchComponent, {
-      width: '650px'
+    this.modalOpened = true;
+    const modal = this.matDialog.open(MoviesSearchComponent, {
+      width: '650px',
     });
+
+    modal.afterClosed().subscribe(() => this.modalOpened = false);
   }
 
   ngOnDestroy() {

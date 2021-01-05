@@ -1,5 +1,10 @@
+.mat-raised-button {
+  position: absolute;
+  transform: translateX(calc(100vw - 200px));
+}
+
 .mat-fab {
   position: fixed;
-  bottom: 60px;
-  right: 60px;
+  transform: translateX(calc(100vw - 120px)) translateY(calc(100vh - 180px));
+  z-index: 10;
 }
