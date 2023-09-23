@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesSearchService } from '../../services/movies-search.service';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Movie } from '../../models/Movie';
 import { switchMap, debounceTime, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
 })
 export class MoviesSearchComponent implements OnInit {
 
-  searchCtrl = new FormControl();
+  searchCtrl = new UntypedFormControl();
   movies: Observable<Movie[]>;
   selectedMovie: MovieDetails;
 

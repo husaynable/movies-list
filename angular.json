@@ -135,7 +135,6 @@
       }
     }
   },
-  "defaultProject": "movies-list",
   "cli": {
     "analytics": "f85a2e33-cdc8-4955-80d2-c4e391939580"
   }
