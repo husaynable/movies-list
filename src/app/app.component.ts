@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MoviesSearchComponent } from './components/movies-search/movies-search.component';
