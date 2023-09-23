@@ -11,22 +11,21 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { MoviesSearchComponent } from './components/movies-search/movies-search.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MoviesListComponent,
-    MovieCardComponent,
-    MoviesSearchComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [MoviesSearchComponent]
+    declarations: [
+        AppComponent,
+        MoviesListComponent,
+        MovieCardComponent,
+        MoviesSearchComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
