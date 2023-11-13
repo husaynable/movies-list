@@ -1,13 +1,25 @@
 import { Component, NgZone, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MoviesSearchComponent } from './components/movies-search/movies-search.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MoviesListComponent } from './components/movies-list/movies-list.component';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports: [
+    NgStyle,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MoviesListComponent,
+  ],
+  standalone: true
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   showFab = false;

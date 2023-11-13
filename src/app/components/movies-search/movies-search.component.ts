@@ -1,35 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { MoviesSearchService } from '../../services/movies-search.service';
-import { UntypedFormControl } from '@angular/forms';
-import { Movie } from '../../models/Movie';
-import { switchMap, debounceTime, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { MovieDetails } from '../../models/movie-details';
-import { MoviesStoreService } from '../../services/movies-store.service';
-import { SnackBarService } from '../../services/snack-bar.service';
+import { Component, OnInit } from "@angular/core";
+import { MoviesSearchService } from "../../services/movies-search.service";
+import { Movie } from "../../models/movie";
+import { switchMap, debounceTime, map } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { MovieDetails } from "../../models/movie-details";
+import { MoviesStoreService } from "../../services/movies-store.service";
+import { SnackBarService } from "../../services/snack-bar.service";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
-  selector: 'app-movies-search',
-  templateUrl: './movies-search.component.html',
-  styleUrls: ['./movies-search.component.scss']
+  selector: "app-movies-search",
+  templateUrl: "./movies-search.component.html",
+  styleUrls: ["./movies-search.component.scss"],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+  ],
 })
 export class MoviesSearchComponent implements OnInit {
-
-  searchCtrl = new UntypedFormControl();
+  searchCtrl = new FormControl("");
   movies: Observable<Movie[]>;
   selectedMovie: MovieDetails;
 
-  constructor(private searchService: MoviesSearchService,
-              private storeService: MoviesStoreService,
-              private snackBar: SnackBarService) { }
+  constructor(
+    private searchService: MoviesSearchService,
+    private storeService: MoviesStoreService,
+    private snackBar: SnackBarService
+  ) {}
 
   ngOnInit() {
     this.movies = this.searchCtrl.valueChanges.pipe(
       debounceTime(150),
-      switchMap(searchText => this.searchService.search(searchText)),
-      map(movies => {
+      switchMap((searchText) => this.searchService.search(searchText)),
+      map((movies) => {
         if (!movies || movies.length === 0) {
-          return [{ Title: 'No Results' }] as Movie[];
+          return [{ Title: "No Results" }] as Movie[];
         } else {
           return movies;
         }
@@ -39,8 +54,9 @@ export class MoviesSearchComponent implements OnInit {
 
   movieSelected(movie: Movie) {
     if (movie.imdbID) {
-      this.searchService.getFullInfo(movie)
-        .subscribe(movieDetails => this.selectedMovie = movieDetails);
+      this.searchService
+        .getFullInfo(movie)
+        .subscribe((movieDetails) => (this.selectedMovie = movieDetails));
     }
   }
 
@@ -51,7 +67,7 @@ export class MoviesSearchComponent implements OnInit {
   addMovieToList() {
     if (!this.checkMovieAlreadyInList()) {
       this.storeService.addMovie(this.selectedMovie);
-      this.snackBar.show('Movie added to list');
+      this.snackBar.show("Movie added to list");
     }
   }
 }

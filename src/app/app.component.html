@@ -4,7 +4,7 @@
       <div class="page-header-title">
         Movies List
       </div>
-      <button 
+      <button
         mat-raised-button
         style="transition: transform 0.5s"
         [ngStyle]="{'display': modalOpened ? 'none' : 'block' }"
@@ -13,7 +13,9 @@
         (click)="openSearchDialog()"
       >
         <mat-icon>search</mat-icon>
-        <span *ngIf="!showCircleBtn">Search Movie...</span>
+        @if(!showCircleBtn) {
+          <span>Search Movie...</span>
+        }
       </button>
     </div>
   </div>

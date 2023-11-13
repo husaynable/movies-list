@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MovieDetails } from '../models/movie-details';
-import { Movie } from '../models/Movie';
+import { Movie } from '../models/movie';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({

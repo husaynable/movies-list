@@ -3,11 +3,16 @@ import { MovieDetails } from '../../models/movie-details';
 import { MoviesStoreService } from '../../services/movies-store.service';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { Observable } from 'rxjs';
+import { MovieCardComponent } from '../movie-card/movie-card.component';
 
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.scss']
+  styleUrls: ['./movies-list.component.scss'],
+  standalone: true,
+  imports: [
+    MovieCardComponent,
+  ]
 })
 export class MoviesListComponent implements OnInit {
   movies$: Observable<MovieDetails[]>;
