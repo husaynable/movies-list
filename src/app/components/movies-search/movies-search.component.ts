@@ -12,6 +12,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
+import { MovieCardComponent } from "../movie-card/movie-card.component";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-movies-search",
@@ -19,6 +21,8 @@ import { MatButtonModule } from "@angular/material/button";
   styleUrls: ["./movies-search.component.scss"],
   standalone: true,
   imports: [
+    MovieCardComponent,
+    AsyncPipe,
     ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,
