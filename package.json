@@ -9,17 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,scss,html}\"",
-    "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.{ts,scss,html}\""
-  },
-  "lint-staged": {
-    "src/**/*.{ts,scss,html}": [
-      "npm run prettier:fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.{ts,scss,html}\"",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -71,5 +62,10 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.4.1",
     "typescript": "^5.2.2"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,scss,html}": [
+      "npm run prettier:fix"
+    ]
   }
 }
