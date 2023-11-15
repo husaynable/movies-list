@@ -3,28 +3,26 @@
   display: block;
 }
 
-.mat-card-content {
-  display: grid;
-  grid-template:
-            "b a a" auto
-            "b c c" auto
-            "b c c" auto / auto auto auto;
-  gap: 2vw;
+:host {
+  width: 382px;
+}
+
+.caption-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .caption {
-  grid-area: a;
   color: #2a5885;
 }
 
 .poster {
-  grid-area: b;
   object-fit: contain;
 }
 
 .movie-attrs {
   display: grid;
-  grid-area: c;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: 55px 1fr;
   gap: 1vw;
@@ -33,21 +31,4 @@
 
 .movie-attr-name {
   font-weight: bold;
-}
-
-@media screen and (max-width: 850px) {
-  .mat-card-content {
-    grid-template:
-      "a a a" auto
-      "b b b" auto
-      "c c c" auto / auto auto auto;
-  }
-
-  .caption {
-    text-align: center;
-  }
-
-  .poster {
-    margin: 0 auto;
-  }
 }

@@ -6,16 +6,12 @@
       </div>
       <button
         mat-raised-button
-        style="transition: transform 0.5s"
-        [ngStyle]="{'display': modalOpened ? 'none' : 'block' }"
         color="primary"
-        id="defaultSearchBtn"
+        class="searchBtn"
         (click)="openSearchDialog()"
       >
         <mat-icon>search</mat-icon>
-        @if(!showCircleBtn) {
-          <span>Search Movie...</span>
-        }
+        <span>Search Movie...</span>
       </button>
     </div>
   </div>

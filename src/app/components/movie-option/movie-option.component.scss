@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 0;
+}
+
+:host:last-child {
+  flex-grow: 1;
+}
+
+img {
+  object-fit: contain;
+}

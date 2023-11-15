@@ -1,9 +1,7 @@
-@use '@angular/material' as mat;
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {
   outline:none !important;
-  transition: all 0.2s;
 }
 
 body{
@@ -21,25 +19,7 @@ a {
   }
 }
 
-.page-header{
-  position: relative;
-  height: 150px;
-  background-color: mat.get-color-from-palette(mat.$indigo-palette, 400);
-  color: white;
-  padding: 10px 10px 10px 1rem;
-  &-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: absolute;
-    right: 15px;
-    left: 15px;
-    bottom: 15px;
-  }
-  &-title{
-    font-size: 86px;
-  }
-}
+
 
 .container {
   margin: 25px;

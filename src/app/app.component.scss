@@ -1,10 +1,21 @@
-.mat-raised-button {
-  position: absolute;
-  transform: translateX(calc(100vw - 200px));
-}
+@use '@angular/material' as mat;
 
-.mat-fab {
-  position: fixed;
-  transform: translateX(calc(100vw - 120px)) translateY(calc(100vh - 180px));
-  z-index: 10;
+.page-header{
+  position: relative;
+  height: 150px;
+  background-color: mat.get-color-from-palette(mat.$indigo-palette, 400);
+  color: white;
+  padding: 10px 10px 10px 1rem;
+  &-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    right: 15px;
+    left: 15px;
+    bottom: 15px;
+  }
+  &-title{
+    font-size: 86px;
+  }
 }

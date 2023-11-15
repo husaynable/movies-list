@@ -1,22 +1,24 @@
 <h2 mat-dialog-title>Search Movie</h2>
 <mat-dialog-content>
-  <mat-form-field>
-    <input
-      matInput
-      cdkFocusInitial
-      placeholder="Movie title"
-      [formControl]="searchCtrl"
-      [matAutocomplete]="autocomplete"
-    />
+  <div class="search-input-wrapper">
+    <mat-form-field class="search-input">
+      <input
+        matInput
+        cdkFocusInitial
+        placeholder="Movie title"
+        [formControl]="searchCtrl"
+        [matAutocomplete]="autocomplete"
+      />
 
-    <mat-autocomplete #autocomplete="matAutocomplete">
-      @for (movie of movies | async; track movie.imdbID) {
-        <mat-option [value]="movie.Title" (onSelectionChange)="movieSelected(movie)">
-          <p>{{ movie.Title }}</p>
-        </mat-option>
-      }
-    </mat-autocomplete>
-  </mat-form-field>
+      <mat-autocomplete #autocomplete="matAutocomplete">
+        @for (movie of movies | async; track movie.imdbID) {
+          <mat-option (onSelectionChange)="movieSelected(movie)">
+            <app-movie-option [movie]="movie"></app-movie-option>
+          </mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
 
   @if (selectedMovie) {
     <app-movie-card [movie]="selectedMovie"></app-movie-card>

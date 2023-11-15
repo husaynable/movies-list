@@ -1,8 +1,21 @@
 <mat-card>
-  <mat-card-content>
-    <a href="{{ imdbEndpoint }}{{ movie.imdbID }}" target="_blank" class="caption">
-      <h2>{{ movie.Title }}</h2>
-    </a>
+  <mat-card-content class="card-content">
+    <div class="caption-wrapper">
+      <a href="{{ imdbEndpoint }}{{ movie.imdbID }}" target="_blank" class="caption">
+        <h2>{{ movie.Title }}</h2>
+      </a>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteMovie()">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </div>
+
     <img [ngSrc]="movie.Poster" width="350" height="570" class="poster" alt="movie's poster" priority />
     <div class="movie-attrs">
       <div class="movie-attr-name">Director:</div>
