@@ -3,7 +3,7 @@
     <a href="{{ imdbEndpoint }}{{ movie.imdbID }}" target="_blank" class="caption">
       <h2>{{ movie.Title }}</h2>
     </a>
-    <img [ngSrc]="movie.Poster" height="350" class="poster" />
+    <img [ngSrc]="movie.Poster" width="350" height="570" class="poster" alt="movie's poster" priority />
     <div class="movie-attrs">
       <div class="movie-attr-name">Director:</div>
       <div>{{ movie.Director }}</div>

@@ -23,7 +23,7 @@ import { NgStyle } from '@angular/common';
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   showFab = false;
-  headerFontSub: Subscription;
+  headerFontSub?: Subscription;
   showCircleBtn = false;
   modalOpened = false;
 
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       ).subscribe(() => {
         function updateTitleSize() {
           const el = document.querySelector('.page-header-title');
-          el.setAttribute('style', `font-size: ${128 - window.scrollY}px`);
+          el?.setAttribute('style', `font-size: ${128 - window.scrollY}px`);
         }
         requestAnimationFrame(updateTitleSize);
       });
@@ -58,18 +58,20 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       const entry = entries[0];
       if (entry) {
         if (entry.isIntersecting) {
-          btn.classList.add('mat-raised-button');
-          btn.classList.remove('mat-fab');
+          btn?.classList.add('mat-raised-button');
+          btn?.classList.remove('mat-fab');
           this.showCircleBtn = false;
         } else {
-          btn.classList.add('mat-fab');
-          btn.classList.remove('mat-raised-button');
+          btn?.classList.add('mat-fab');
+          btn?.classList.remove('mat-raised-button');
           this.showCircleBtn = true;
         }
       }
     };
     const observer = new IntersectionObserver(callback, {threshold: 1.0});
-    observer.observe(el);
+    if (el) {
+      observer.observe(el);
+    }
   }
 
   openSearchDialog() {
@@ -82,6 +84,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy() {
-    this.headerFontSub && this.headerFontSub.unsubscribe();
+    this.headerFontSub?.unsubscribe();
   }
 }

@@ -1,10 +1,6 @@
-.card-container {
+:host {
   display: flex;
-  align-items: center;
-
-  &+ .card-container {
-    margin-top: 35px;
-  }
+  gap: 25px;
 }
 
 .mat-icon-button {

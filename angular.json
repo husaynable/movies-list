@@ -22,8 +22,7 @@
         "@schematics/angular:guard": {
           "skipTests": true
         },
-        "@schematics/angular:module": {
-        },
+        "@schematics/angular:module": {},
         "@schematics/angular:pipe": {
           "skipTests": true
         },
@@ -111,6 +110,15 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }

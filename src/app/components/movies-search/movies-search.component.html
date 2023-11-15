@@ -10,7 +10,7 @@
     />
 
     <mat-autocomplete #autocomplete="matAutocomplete">
-      @for (movie of movies | async; track movie) {
+      @for (movie of movies | async; track movie.imdbID) {
         <mat-option [value]="movie.Title" (onSelectionChange)="movieSelected(movie)">
           <p>{{ movie.Title }}</p>
         </mat-option>
