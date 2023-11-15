@@ -5,10 +5,9 @@ import { MovieDetails } from '../models/movie-details';
 import { Movie } from '../models/movie';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesStoreService {
-
   private readonly localStorageKey = 'movies';
   private movies$: BehaviorSubject<MovieDetails[]>;
 
@@ -32,14 +31,14 @@ export class MoviesStoreService {
 
   deleteMovie(movie: MovieDetails) {
     let movies = this.loadMoviesFromLocalStorage();
-    movies = movies.filter(m => m.imdbID !== movie.imdbID);
+    movies = movies.filter((m) => m.imdbID !== movie.imdbID);
     this.writeMoviesToLocalStorage(movies);
     this.movies$.next(movies);
   }
 
   includes(movie: Movie): boolean {
     const movies = this.loadMoviesFromLocalStorage();
-    return movies.map(m => m.imdbID).includes(movie.imdbID);
+    return movies.map((m) => m.imdbID).includes(movie.imdbID);
   }
 
   private loadMoviesFromLocalStorage(): MovieDetails[] {

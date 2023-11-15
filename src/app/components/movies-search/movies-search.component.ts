@@ -44,7 +44,7 @@ export class MoviesSearchComponent implements OnInit {
   constructor(
     private searchService: MoviesSearchService,
     private storeService: MoviesStoreService,
-    private snackBar: SnackBarService
+    private snackBar: SnackBarService,
   ) {}
 
   ngOnInit() {
@@ -57,7 +57,7 @@ export class MoviesSearchComponent implements OnInit {
         } else {
           return movies;
         }
-      })
+      }),
     );
   }
 

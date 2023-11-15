@@ -8,18 +8,16 @@ import { OmdbApi } from '../models/omdb-api';
 import { MovieDetails } from '../models/movie-details';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesSearchService {
   private readonly apiKey = '584e7a27';
   private readonly apiUrl = `http://www.omdbapi.com/?apikey=${this.apiKey}&`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   search(searchText: string): Observable<Movie[]> {
-    return this.http.get<OmdbApi>(`${this.apiUrl}s=${searchText}`).pipe(
-      map(api => api.Search)
-    );
+    return this.http.get<OmdbApi>(`${this.apiUrl}s=${searchText}`).pipe(map((api) => api.Search));
   }
 
   getFullInfo(movie: Movie): Observable<MovieDetails> {

@@ -29,13 +29,9 @@
   @if (selectedMovie) {
     <span>
       @if (!checkMovieAlreadyInList()) {
-        <button mat-button (click)="addMovieToList()">
-          Add to List
-        </button>
+        <button mat-button (click)="addMovieToList()">Add to List</button>
       } @else {
-        <button mat-button disabled>
-          Already in List
-        </button>
+        <button mat-button disabled>Already in List</button>
       }
     </span>
   }

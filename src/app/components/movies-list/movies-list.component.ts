@@ -12,10 +12,7 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.scss'],
   standalone: true,
-  imports: [
-    MovieCardComponent,
-    AsyncPipe,
-  ]
+  imports: [MovieCardComponent, AsyncPipe],
 })
 export class MoviesListComponent implements OnInit {
   movies$: Observable<MovieDetails[]>;
@@ -23,7 +20,7 @@ export class MoviesListComponent implements OnInit {
 
   constructor(
     private storeService: MoviesStoreService,
-    private snackBar: SnackBarService
+    private snackBar: SnackBarService,
   ) {}
 
   ngOnInit() {

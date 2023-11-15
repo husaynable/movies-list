@@ -1,12 +1,12 @@
 @use '@angular/material' as mat;
 
-.page-header{
+.page-header {
   position: relative;
   height: 150px;
   background-color: mat.get-color-from-palette(mat.$indigo-palette, 400);
   color: white;
   padding: 10px 10px 10px 1rem;
-  &-content{
+  &-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -15,7 +15,7 @@
     left: 15px;
     bottom: 15px;
   }
-  &-title{
+  &-title {
     font-size: 86px;
   }
 }

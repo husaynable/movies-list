@@ -11,8 +11,5 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(HttpClientModule),
-    importProvidersFrom(BrowserAnimationsModule)
-  ],
+  providers: [importProvidersFrom(HttpClientModule), importProvidersFrom(BrowserAnimationsModule)],
 });
