@@ -8,11 +8,17 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,scss,html}\""
+    "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,scss,html}\"",
+    "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.{ts,scss,html}\""
+  },
+  "lint-staged": {
+    "src/**/*.{ts,scss,html}": [
+      "npm run prettier:fix"
+    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier:check"
+      "pre-commit": "lint-staged"
     }
   },
   "private": true,
