@@ -10,6 +10,7 @@
     "e2e": "ng e2e",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,scss,html}\"",
     "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.{ts,scss,html}\"",
+    "eslint:fix": "eslint -c .eslintrc.json --fix \"src/**/*.{ts,html}\"",
     "prepare": "husky install"
   },
   "private": true,
@@ -65,7 +66,8 @@
   },
   "lint-staged": {
     "src/**/*.{ts,scss,html}": [
-      "npm run prettier:fix"
+      "npm run prettier:fix",
+      "npm run eslint:fix"
     ]
   }
 }
