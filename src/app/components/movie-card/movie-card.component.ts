@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { MovieDetails } from "../../models/movie-details";
 import { MatCardModule } from "@angular/material/card";
 import { NgOptimizedImage } from "@angular/common";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+
+import { MovieDetails } from "../../models/movie-details";
 
 @Component({
   selector: "app-movie-card",

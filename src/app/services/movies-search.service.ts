@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { Movie } from '../models/movie';
 import { OmdbApi } from '../models/omdb-api';
 import { MovieDetails } from '../models/movie-details';

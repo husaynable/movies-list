@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+
 import { MovieDetails } from '../../models/movie-details';
 import { MoviesStoreService } from '../../services/movies-store.service';
 import { SnackBarService } from '../../services/snack-bar.service';
-import { Observable } from 'rxjs';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-movies-list',

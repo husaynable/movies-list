@@ -1,8 +1,9 @@
 import { Component, NgZone } from "@angular/core";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { MoviesSearchComponent } from "./components/movies-search/movies-search.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+
+import { MoviesSearchComponent } from "./components/movies-search/movies-search.component";
 import { MoviesListComponent } from "./components/movies-list/movies-list.component";
 
 @Component({

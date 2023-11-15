@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+
 import { MovieDetails } from '../models/movie-details';
 import { Movie } from '../models/movie';
-import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

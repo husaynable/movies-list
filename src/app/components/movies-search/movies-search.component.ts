@@ -1,21 +1,22 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MoviesSearchService } from '../../services/movies-search.service';
-import { Movie } from '../../models/movie';
-import { switchMap, debounceTime, map, finalize } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { MovieDetails } from '../../models/movie-details';
-import { MoviesStoreService } from '../../services/movies-store.service';
-import { SnackBarService } from '../../services/snack-bar.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatButtonModule } from '@angular/material/button';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { debounceTime, finalize, map, switchMap } from 'rxjs/operators';
+
+import { Movie } from '../../models/movie';
+import { MovieDetails } from '../../models/movie-details';
+import { MoviesSearchService } from '../../services/movies-search.service';
+import { MoviesStoreService } from '../../services/movies-store.service';
+import { SnackBarService } from '../../services/snack-bar.service';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { AsyncPipe } from '@angular/common';
 import { MovieOptionComponent } from '../movie-option/movie-option.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-movies-search',
