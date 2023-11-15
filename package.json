@@ -11,6 +11,7 @@
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,scss,html}\"",
     "prettier:fix": "prettier --config .prettierrc --write \"src/**/*.{ts,scss,html}\"",
     "eslint:fix": "eslint -c .eslintrc.json --fix \"src/**/*.{ts,html}\"",
+    "stylelint:fix": "stylelint --fix \"src/**/*.scss\"",
     "prepare": "husky install"
   },
   "private": true,
@@ -61,13 +62,20 @@
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
     "protractor": "~7.0.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
     "ts-node": "~8.4.1",
     "typescript": "^5.2.2"
   },
   "lint-staged": {
     "src/**/*.{ts,scss,html}": [
-      "npm run prettier:fix",
+      "npm run prettier:fix"
+    ],
+    "src/**/*.{ts,html}": [
       "npm run eslint:fix"
+    ],
+    "src/**/*.scss": [
+      "npm run stylelint:fix"
     ]
   }
 }
