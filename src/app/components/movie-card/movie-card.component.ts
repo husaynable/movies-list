@@ -26,7 +26,7 @@ export class MovieCardComponent {
 
   readonly imdbEndpoint = "https://www.imdb.com/title/";
 
-  deleteMovie() {
+       deleteMovie() {
     this.delete.emit(this.movie);
   }
 }
