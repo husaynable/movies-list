@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,10 +14,7 @@ import { MoviesListComponent } from './components/movies-list/movies-list.compon
   standalone: true,
 })
 export class AppComponent {
-  constructor(
-    private matDialog: MatDialog,
-    private ngZone: NgZone,
-  ) {}
+  constructor(private matDialog: MatDialog) {}
 
   openSearchDialog() {
     this.matDialog.open(MoviesSearchComponent, {
