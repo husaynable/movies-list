@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,7 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { debounceTime, finalize, map, switchMap, takeUntil } from 'rxjs/operators';
+import { debounceTime, finalize, map, switchMap } from 'rxjs/operators';
 
 import { Movie } from '../../models/movie';
 import { MovieDetails } from '../../models/movie-details';
@@ -34,12 +35,13 @@ import { MovieOptionComponent } from '../movie-option/movie-option.component';
     MovieOptionComponent,
   ],
 })
-export class MoviesSearchComponent implements OnInit, OnDestroy {
+export class MoviesSearchComponent implements OnInit {
   searchCtrl = new FormControl('');
   movies: Observable<Movie[]>;
   selectedMovie: MovieDetails;
   loading$ = new BehaviorSubject<boolean>(false);
   onDestroy$ = new Subject<void>();
+  destroyRef$ = inject(DestroyRef);
 
   constructor(
     private searchService: MoviesSearchService,
@@ -68,7 +70,7 @@ export class MoviesSearchComponent implements OnInit, OnDestroy {
         .getFullInfo(movie)
         .pipe(
           finalize(() => this.loading$.next(false)),
-          takeUntil(this.onDestroy$),
+          takeUntilDestroyed(this.destroyRef$),
         )
         .subscribe((movieDetails) => (this.selectedMovie = movieDetails));
     }
@@ -83,9 +85,5 @@ export class MoviesSearchComponent implements OnInit, OnDestroy {
       this.storeService.addMovie(this.selectedMovie);
       this.snackBar.show('Movie added to list');
     }
-  }
-
-  ngOnDestroy() {
-    this.onDestroy$.next();
   }
 }
