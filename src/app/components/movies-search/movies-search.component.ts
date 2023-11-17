@@ -1,13 +1,13 @@
 import { AsyncPipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, WritableSignal, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { debounceTime, finalize, map, switchMap } from 'rxjs/operators';
 
 import { Movie } from '../../models/movie';
@@ -36,12 +36,13 @@ import { MovieOptionComponent } from '../movie-option/movie-option.component';
   ],
 })
 export class MoviesSearchComponent implements OnInit {
-  searchCtrl = new FormControl('');
-  movies: Observable<Movie[]>;
-  selectedMovie: MovieDetails;
-  loading$ = new BehaviorSubject<boolean>(false);
-  onDestroy$ = new Subject<void>();
-  destroyRef$ = inject(DestroyRef);
+  protected destroyRef$ = inject(DestroyRef);
+  protected loading = signal(false);
+
+  protected movies: Observable<Movie[]>;
+  protected selectedMovie: WritableSignal<MovieDetails> = signal(null);
+
+  protected searchCtrl = new FormControl('');
 
   constructor(
     private searchService: MoviesSearchService,
@@ -65,24 +66,24 @@ export class MoviesSearchComponent implements OnInit {
 
   movieSelected(movie: Movie) {
     if (movie?.imdbID) {
-      this.loading$.next(true);
+      this.loading.set(true);
       this.searchService
         .getFullInfo(movie)
         .pipe(
-          finalize(() => this.loading$.next(false)),
+          finalize(() => this.loading.set(false)),
           takeUntilDestroyed(this.destroyRef$),
         )
-        .subscribe((movieDetails) => (this.selectedMovie = movieDetails));
+        .subscribe((movieDetails) => this.selectedMovie.set(movieDetails));
     }
   }
 
   checkMovieAlreadyInList(): boolean {
-    return this.storeService.includes(this.selectedMovie);
+    return this.storeService.includes(this.selectedMovie());
   }
 
   addMovieToList() {
     if (!this.checkMovieAlreadyInList()) {
-      this.storeService.addMovie(this.selectedMovie);
+      this.storeService.addMovie(this.selectedMovie());
       this.snackBar.show('Movie added to list');
     }
   }

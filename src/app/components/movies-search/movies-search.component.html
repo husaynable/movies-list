@@ -20,13 +20,13 @@
     </mat-form-field>
   </div>
 
-  @if (selectedMovie) {
-    <app-movie-card [movie]="selectedMovie"></app-movie-card>
+  @if (selectedMovie()) {
+    <app-movie-card [movie]="selectedMovie()"></app-movie-card>
   }
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  @if (selectedMovie) {
+  @if (selectedMovie()) {
     <span>
       @if (!checkMovieAlreadyInList()) {
         <button mat-button (click)="addMovieToList()">Add to List</button>
