@@ -15,7 +15,7 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
   imports: [MovieCardComponent, AsyncPipe],
 })
 export class MoviesListComponent implements OnInit {
-  protected movies$: Observable<MovieDetails[]>;
+  protected movies$?: Observable<MovieDetails[]>;
 
   constructor(
     private storeService: MoviesStoreService,

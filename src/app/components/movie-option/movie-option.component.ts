@@ -10,5 +10,5 @@ import { Movie } from '../../models/movie';
   exportAs: 'mat-option',
 })
 export class MovieOptionComponent {
-  @Input() movie!: Movie;
+  @Input({ required: true }) movie!: Movie;
 }

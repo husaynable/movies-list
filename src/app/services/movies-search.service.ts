@@ -16,7 +16,7 @@ export class MoviesSearchService {
 
   constructor(private http: HttpClient) {}
 
-  search(searchText: string): Observable<Movie[]> {
+  search(searchText: string | null): Observable<Movie[]> {
     return this.http.get<OmdbApi>(`${this.apiUrl}s=${searchText}`).pipe(map((api) => api.Search));
   }
 

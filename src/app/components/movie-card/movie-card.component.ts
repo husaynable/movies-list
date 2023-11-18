@@ -15,7 +15,7 @@ import { MovieDetails } from '../../models/movie-details';
   imports: [NgOptimizedImage, MatCardModule, MatMenuModule, MatButtonModule, MatIconModule],
 })
 export class MovieCardComponent {
-  @Input() movie?: MovieDetails;
+  @Input({ required: true }) movie!: MovieDetails;
   @Output() delete = new EventEmitter<MovieDetails>();
 
   readonly imdbEndpoint = 'https://www.imdb.com/title/';

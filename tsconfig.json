@@ -21,7 +21,8 @@
         "node_modules/core-js/proposals/reflect-metadata"
       ]
     },
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "strict": true
   },
   "angularCompilerOptions": {
     "strictTemplates": true,

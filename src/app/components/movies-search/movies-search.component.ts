@@ -39,8 +39,8 @@ export class MoviesSearchComponent implements OnInit {
   protected destroyRef$ = inject(DestroyRef);
   protected loading = signal(false);
 
-  protected movies: Observable<Movie[]>;
-  protected selectedMovie: WritableSignal<MovieDetails> = signal(null);
+  protected movies?: Observable<Movie[]>;
+  protected selectedMovie: WritableSignal<MovieDetails | null> = signal(null);
 
   protected searchCtrl = new FormControl('');
 
@@ -78,12 +78,12 @@ export class MoviesSearchComponent implements OnInit {
   }
 
   checkMovieAlreadyInList(): boolean {
-    return this.storeService.includes(this.selectedMovie());
+    return !!this.selectedMovie() && this.storeService.includes(this.selectedMovie()!);
   }
 
   addMovieToList() {
-    if (!this.checkMovieAlreadyInList()) {
-      this.storeService.addMovie(this.selectedMovie());
+    if (!this.checkMovieAlreadyInList() && this.selectedMovie()) {
+      this.storeService.addMovie(this.selectedMovie()!);
       this.snackBar.show('Movie added to list');
     }
   }

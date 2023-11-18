@@ -118,11 +118,13 @@
           "options": {
             "devServerTarget": "movies-list:serve",
             "watch": true,
-            "headless": false
+            "headless": false,
+            "browser": "chrome"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "movies-list:serve:production"
+              "devServerTarget": "movies-list:serve:production",
+              "headless": true
             }
           }
         }

@@ -21,7 +21,7 @@
   </div>
 
   @if (selectedMovie()) {
-    <app-movie-card [movie]="selectedMovie()"></app-movie-card>
+    <app-movie-card [movie]="selectedMovie()!"></app-movie-card>
   }
 </mat-dialog-content>
 
